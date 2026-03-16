@@ -4,6 +4,9 @@ plugins {
 }
 
 android {
+    packagingOptions {
+        doNotStrip "**/*.so"
+    }
     // This MUST match the applicationId and folder structure
     namespace 'com.onisong.projectexe'
     compileSdk 34
