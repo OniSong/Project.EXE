@@ -12,7 +12,7 @@ class OverlayService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     fun loadModel() {
-        // AGP 9.x / SceneView 2.x Syntax
+        // Updated syntax for SceneView 0.10.0+
         val modelNode = sceneView.modelLoader.loadModel("models/fait.glb")
         modelNode?.let {
             sceneView.addChild(it)
