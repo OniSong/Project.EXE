@@ -7,6 +7,7 @@ import io.github.sceneview.SceneView
 import io.github.sceneview.node.ModelNode
 
 class OverlayService : Service() {
+    private var modelLoader: Any? = null
     private lateinit var modelLoader: Any // Replace Any with your 3D engine type
     private lateinit var sceneView: SceneView
 
