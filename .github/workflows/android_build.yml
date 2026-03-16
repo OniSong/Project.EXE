@@ -1,4 +1,4 @@
-name: Build APK
+name: Master Build Project.EXE
 on: [push]
 jobs:
   build:
@@ -10,4 +10,4 @@ jobs:
       - run: chmod +x gradlew
       - run: ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
-        with: { name: Fait-Debug-APK, path: app/build/outputs/apk/debug/app-debug.apk }
+        with: { name: Project-EXE-Final-APK, path: app/build/outputs/apk/debug/app-debug.apk }

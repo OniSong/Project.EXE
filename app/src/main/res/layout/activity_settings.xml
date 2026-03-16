@@ -1,11 +1,18 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical" android:padding="16dp" android:background="#0A0A0A">
-    <TextView android:text="PROJECT.EXE" android:textColor="#00FF00" android:textSize="24sp" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-    <Button android:id="@+id/btnLeftGGUF" android:text="Upload Left Brain (GGUF)" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
-    <Button android:id="@+id/btnRightGGUF" android:text="Upload Right Brain (GGUF)" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-    <Button android:id="@+id/btnVRM" android:text="Upload VRM" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-    <EditText android:id="@+id/etLeftAPI" android:hint="Left API Key" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp"/>
-    <EditText android:id="@+id/etRightAPI" android:hint="Right API Key" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-    <Switch android:id="@+id/swCloud" android:text="Cloud Mode" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-</LinearLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="#0A0A0A">
+    <LinearLayout android:orientation="vertical" android:padding="20dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:text="PROJECT.EXE :: FAIT" android:textColor="#00FF00" android:textSize="28sp" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="20dp"/>
+        
+        <TextView android:text="LOCAL ASSETS" android:textColor="#666" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/btnLeftGGUF" android:text="Load Left GGUF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/btnRightGGUF" android:text="Load Right GGUF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/btnVRM" android:text="Load VRM Model" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#222" android:layout_marginVertical="20dp"/>
+
+        <TextView android:text="CLOUD ENDPOINTS" android:textColor="#666" android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/etLeftAPI" android:hint="Left Brain API Key" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <EditText android:id="@+id/etRightAPI" android:hint="Right Brain API Key" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <Switch android:id="@+id/swCloud" android:text="Enable Cloud Orchestration" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="10dp"/>
+    </LinearLayout>
+</ScrollView>
