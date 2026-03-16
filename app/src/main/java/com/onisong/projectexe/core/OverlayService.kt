@@ -35,15 +35,19 @@ class OverlayService : Service() {
         overlayView = LayoutInflater.from(this).inflate(R.layout.overlay_fait, null)
         val sceneView = overlayView?.findViewById<SceneView>(R.id.sceneView)
 
-        config.vrmPath?.let { path ->
-            val modelNode = ModelNode()
-            sceneView?.addChild(modelNode)
-            modelNode.loadModelAsync(
-                context = this,
-                lifecycle = null,
-                modelInstance = path,
-                autoAnimate = true
-            )
+        sceneView?.let { view ->
+            config.vrmPath?.let { path ->
+                // Fix: Passing view.engine to satisfy the new ModelNode constructor
+                val modelNode = ModelNode(view.engine).apply {
+                    loadModelAsync(
+                        context = this@OverlayService,
+                        lifecycle = null,
+                        modelInstance = path,
+                        autoAnimate = true
+                    )
+                }
+                view.addChild(modelNode)
+            }
         }
 
         windowManager.addView(overlayView, params)
