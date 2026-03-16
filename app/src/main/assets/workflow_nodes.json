@@ -1,0 +1,11 @@
+{
+  "start_node": "init",
+  "nodes": [
+    {
+      "id": "init",
+      "llm_target": "brain",
+      "purpose": "context_assessment",
+      "next": ["idle", "greeting", "alert"]
+    }
+  ]
+}
