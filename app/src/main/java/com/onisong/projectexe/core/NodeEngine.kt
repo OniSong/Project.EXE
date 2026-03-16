@@ -6,17 +6,23 @@ import kotlinx.coroutines.flow.MutableStateFlow
 class NodeEngine(context: Context) {
     private val config = ConfigManager(context)
     private val avatarManager = AvatarManager(context)
+    private val sensorGate = SensorGate(context)
     val currentNode = MutableStateFlow(0)
 
     suspend fun executeCycle(input: String): String {
+        // Node 1: Perception
         currentNode.value = 1
         
-        // Node 15: Check if the 3D body is ready
+        // Node 15: Environmental Awareness
+        val systemContext = sensorGate.getSystemContext()
+        
+        // Node 30: Avatar Animation Trigger
         if (avatarManager.isAvatarLoaded()) {
-            avatarManager.updateAnimation("Gothic")
+            val animationState = if (sensorGate.isCharging()) "Energized" else "Gothic"
+            avatarManager.updateAnimation(animationState)
         }
         
         currentNode.value = 45
-        return "Fait: The void is stabilized. Your 3D vessel is prepared."
+        return "Fait: ${systemContext}. I am observing the void with you."
     }
 }
