@@ -20,30 +20,20 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
         config = ConfigManager(this)
 
-        checkOverlayPermission()
+        // Ensure the system can draw the 3D overlay
+        if (!Settings.canDrawOverlays(this)) {
+            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))
+            startActivityForResult(intent, 101)
+            Toast.makeText(this, "Enable 'Display over other apps' to manifest Fait.", Toast.LENGTH_LONG).show()
+        }
 
         binding.swCloud.isChecked = config.useCloud
         binding.swCloud.setOnCheckedChangeListener { _, isChecked -> 
             config.useCloud = isChecked 
-            if (isChecked) startFaitService()
-        }
-    }
-
-    private fun checkOverlayPermission() {
-        if (!Settings.canDrawOverlays(this)) {
-            val intent = Intent(
-                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                Uri.parse("package:$packageName")
-            )
-            startActivityForResult(intent, 123)
-            Toast.makeText(this, "Please enable 'Display over other apps' for Fait", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    private fun startFaitService() {
-        if (Settings.canDrawOverlays(this)) {
-            val intent = Intent(this, OverlayService::class.java)
-            startForegroundService(intent)
+            if (isChecked && Settings.canDrawOverlays(this)) {
+                val serviceIntent = Intent(this, OverlayService::class.java)
+                startForegroundService(serviceIntent)
+            }
         }
     }
 }

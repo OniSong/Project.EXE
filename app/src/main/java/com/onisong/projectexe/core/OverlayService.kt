@@ -23,8 +23,7 @@ class OverlayService : Service() {
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         
         val params = WindowManager.LayoutParams(
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.WRAP_CONTENT,
+            200, 350, // Standard size for the avatar overlay
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
             PixelFormat.TRANSLUCENT
@@ -35,11 +34,8 @@ class OverlayService : Service() {
         overlayView = LayoutInflater.from(this).inflate(R.layout.overlay_fait, null)
         val sceneView = overlayView?.findViewById<SceneView>(R.id.sceneView)
 
-        // If a VRM path is set in Settings, load it into the 3D scene
         config.vrmPath?.let { path ->
-            sceneView?.loadModelAsync(path) {
-                // Model Loaded: Trigger "Wake Up" Animation
-            }
+            sceneView?.loadModelAsync(path)
         }
 
         windowManager.addView(overlayView, params)
