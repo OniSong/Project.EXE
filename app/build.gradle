@@ -1,0 +1,12 @@
+plugins { id 'com.android.application'; id 'kotlin-android' }
+android {
+    namespace 'com.onisong.projectexe'
+    compileSdk 34
+    defaultConfig {
+        applicationId "com.onisong.projectexe"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+}

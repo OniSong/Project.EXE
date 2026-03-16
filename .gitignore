@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Gradle files
 .gradle/
 build/
@@ -32,3 +33,9 @@ google-services.json
 
 # Android Profiling
 *.hprof
+=======
+.gradle/
+build/
+*.iml
+.DS_Store
+>>>>>>> 3dd665e (Manual project setup and gradle properties)
