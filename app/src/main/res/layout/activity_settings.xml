@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="16dp" android:background="#121212">
+    
+    <TextView android:text="PROJECT.EXE CONFIG" android:textColor="#00FF00" android:textSize="22sp" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="20dp"/>
+
+    <TextView android:text="OFFLINE (LOCAL GGUF / VRM)" android:textColor="#00FF00" android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <Button android:id="@+id/btnLeftGGUF" android:text="Left Brain GGUF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <Button android:id="@+id/btnRightGGUF" android:text="Right Brain GGUF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <Button android:id="@+id/btnVRM" android:text="VRM Avatar" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#333" android:layout_marginVertical="20dp"/>
+
+    <TextView android:text="ONLINE (CLOUD API)" android:textColor="#A020F0" android:textSize="14sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/etLeftAPI" android:hint="Left API Key" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <EditText android:id="@+id/etRightAPI" android:hint="Right API Key" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <Switch android:id="@+id/swCloud" android:text="Enable Cloud Mode" android:textColor="#FFF" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="10dp"/>
+</LinearLayout>
