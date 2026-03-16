@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import io.github.sceneview.SceneView
+import io.github.sceneview.node.ModelNode
 import com.onisong.projectexe.R
 
 class OverlayService : Service() {
@@ -23,7 +24,7 @@ class OverlayService : Service() {
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         
         val params = WindowManager.LayoutParams(
-            200, 350, // Standard size for the avatar overlay
+            250, 400,
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
             PixelFormat.TRANSLUCENT
@@ -35,7 +36,14 @@ class OverlayService : Service() {
         val sceneView = overlayView?.findViewById<SceneView>(R.id.sceneView)
 
         config.vrmPath?.let { path ->
-            sceneView?.loadModelAsync(path)
+            val modelNode = ModelNode()
+            sceneView?.addChild(modelNode)
+            modelNode.loadModelAsync(
+                context = this,
+                lifecycle = null,
+                modelInstance = path,
+                autoAnimate = true
+            )
         }
 
         windowManager.addView(overlayView, params)
