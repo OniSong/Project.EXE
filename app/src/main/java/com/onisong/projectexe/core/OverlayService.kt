@@ -7,17 +7,21 @@ import io.github.sceneview.SceneView
 import io.github.sceneview.node.ModelNode
 
 class OverlayService : Service() {
-    private var modelLoader: Any? = null
-    private lateinit var modelLoader: Any // Replace Any with your 3D engine type
-    private lateinit var sceneView: SceneView
+    private var sceneView: SceneView? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     fun loadModel() {
-        // AGP 9.x / SceneView 2.x Syntax
-        val modelNode = sceneView.modelLoader.loadModel("models/fait.glb")
-        modelNode?.let {
-            sceneView.addChild(it)
-        }
+        val view = sceneView ?: return
+        
+        // We use the direct constructor identified in your error logs:
+        // ModelNode(engine, modelGlbFileLocation, autoAnimate, ...)
+        val modelNode = ModelNode(
+            engine = view.engine,
+            modelGlbFileLocation = "models/fait.glb",
+            autoAnimate = true
+        )
+        
+        view.addChild(modelNode)
     }
 }

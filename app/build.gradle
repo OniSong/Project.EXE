@@ -6,12 +6,12 @@ android {
     packagingOptions {
         doNotStrip "**/*.so"
     }
-    // This MUST match the applicationId and folder structure
+    // This MUST match the applicationId 'com.onisong.projectexe'
     namespace 'com.onisong.projectexe'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.onisong.projectexe"
+        applicationId 'com.onisong.projectexe'
         minSdk 26
         targetSdk 34
         versionCode 1
