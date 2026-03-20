@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
 }
 
 android {
@@ -28,7 +29,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    
 }
 
 dependencies {
@@ -40,25 +40,9 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 }
 
-// New AGP 9.1.0 Syntax: Kotlin is built-in
+// Kotlin compiler configuration for JVM 17 compatibility
 kotlin {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-        // You can add freeCompilerArgs here if needed:
-        // freeCompilerArgs.addAll("-Xjvm-default=all")
-    }
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-        // Note: Using JVM_17 as the bytecode target for Android compatibility
-    }
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-        // Note: Using JVM_17 as the bytecode target for Android compatibility
     }
 }
