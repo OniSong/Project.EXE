@@ -1,0 +1,28 @@
+version: 2.1
+
+# Define the build environment and steps
+jobs:
+  build_and_test:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0 # Adjust version based on your .NET project (e.g., 7.0 or 8.0)
+    steps:
+      - checkout
+      
+      - run:
+          name: Restore Dependencies
+          command: dotnet restore
+
+      - run:
+          name: Build Project
+          command: dotnet build --configuration Release --no-restore
+
+      - run:
+          name: Run Tests
+          command: dotnet test --no-build --verbosity normal
+
+# Orchestrate the job
+workflows:
+  version: 2
+  main_workflow:
+    jobs:
+      - build_and_test
